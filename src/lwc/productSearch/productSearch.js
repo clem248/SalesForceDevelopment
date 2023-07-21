@@ -1,5 +1,6 @@
 import { LightningElement, wire } from 'lwc';
 import getProducts from '@salesforce/apex/ProductController.getProducts';
+import getFilters from '@salesforce/apex/ProductController.getFilters';
 
 export default class ProductSearch extends LightningElement {
     products;
@@ -54,20 +55,31 @@ export default class ProductSearch extends LightningElement {
             this.noResults = false;
         }
     }
-    handleTypeChange(event) {
-            this.selectedType = event.detail.value;
+        handleTypeChange(event) {
+            this.selectedType = event.target.value;
             this.applyFilters();
         }
 
         handleFamilyChange(event) {
-            this.selectedFamily = event.detail.value;
+            this.selectedFamily = event.target.value;
             this.applyFilters();
         }
         applyFilters() {
-                if (!this.products) return; // Make sure products are available
+            if (!this.allProducts) return; // Make sure allProducts is available
 
-                this.noResults = this.products.length === 0;
-            }
+            this.products = this.allProducts.filter((product) => {
+                const typeMatch =
+                    !this.selectedType || product.Type__c.toLowerCase().includes(this.selectedType.toLowerCase());
+
+                const familyMatch =
+                    !this.selectedFamily || product.Family__c.toLowerCase().includes(this.selectedFamily.toLowerCase());
+
+                return typeMatch && familyMatch;
+            });
+
+            this.noResults = this.products.length === 0;
+        }
+
 
 
 }
