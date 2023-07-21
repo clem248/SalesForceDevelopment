@@ -1,0 +1,33 @@
+/* Add custom CSS to adjust the card appearance */
+.slds-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: #f3f2f1;
+    border: 1px solid #d8dde6;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.10);
+    padding: 0.75rem;
+    margin: 0.5rem;
+}
+
+.slds-card__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0;
+}
+
+.slds-card__body {
+    flex-grow: 1;
+    padding: 0.5rem 0;
+}
+/* Add custom CSS for picklists */
+.slds-form-element__control {
+    border: 1px solid #d8dde6;
+    border-radius: 4px;
+}
+
+.slds-form-element__control .slds-combobox {
+    border: none;
+}

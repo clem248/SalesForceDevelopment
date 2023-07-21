@@ -1,21 +1,25 @@
 <template>
-    <!-- Your modal content goes here -->
     <lightning-button label="Create Product" onclick={openModal}></lightning-button>
     <template if:true={isModalOpen}>
-        <div class="modal-container">
-            <div class="modal-content">
-                <h2>Create Product</h2>
-                <lightning-input label="Name" name="name" value={name} onchange={handleInputChange}></lightning-input>
-                <lightning-input label="Description" name="description" value={description} onchange={handleInputChange}></lightning-input>
-                <lightning-input label="Type" name="type" value={type} onchange={handleInputChange}></lightning-input>
-                <lightning-input label="Family" name="family" value={family} onchange={handleInputChange}></lightning-input>
-                <lightning-input label="Image URL" name="image" value={image} onchange={handleInputChange}></lightning-input>
-                <lightning-input label="Price" type="number" name="price" value={price} onchange={handleInputChange}></lightning-input>
-                <div class="modal-footer">
+        <div class="slds-backdrop slds-backdrop_open"></div>
+        <section role="dialog" tabindex="-1" aria-modal="true" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <header class="slds-modal__header">
+                    <h2 class="slds-text-heading_medium">Create Product</h2>
+                </header>
+                <div class="slds-modal__content slds-p-around_medium">
+                    <lightning-input label="Name" name="name" value={name} onchange={handleInputChange}></lightning-input>
+                    <lightning-input label="Description" name="description" value={description} onchange={handleInputChange}></lightning-input>
+                    <lightning-combobox label="Type" name="type" value={type} options={typeOptions} onchange={handleInputChange}></lightning-combobox>
+                    <lightning-combobox label="Family" name="family" value={family} options={familyOptions} onchange={handleInputChange}></lightning-combobox>
+                    <lightning-input label="Image URL" name="image" value={image} onchange={handleInputChange}></lightning-input>
+                    <lightning-input label="Price" type="number" name="price" value={price} onchange={handleInputChange}></lightning-input>
+                </div>
+                <footer class="slds-modal__footer">
                     <lightning-button label="Save" onclick={handleSave}></lightning-button>
                     <lightning-button label="Cancel" onclick={closeModal}></lightning-button>
-                </div>
+                </footer>
             </div>
-        </div>
+        </section>
     </template>
 </template>

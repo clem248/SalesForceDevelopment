@@ -171,13 +171,27 @@
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
-            <restricted>true</restricted>
             <valueSetDefinition>
                 <sorted>false</sorted>
                 <value>
-                    <fullName>\\</fullName>
+                    <fullName>Catty</fullName>
                     <default>false</default>
-                    <label>\\</label>
+                    <label>Catty</label>
+                </value>
+                <value>
+                    <fullName>Flat</fullName>
+                    <default>false</default>
+                    <label>Flat</label>
+                </value>
+                <value>
+                    <fullName>House</fullName>
+                    <default>false</default>
+                    <label>House</label>
+                </value>
+                <value>
+                    <fullName>Mansion</fullName>
+                    <default>false</default>
+                    <label>Mansion</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
@@ -225,9 +239,24 @@
             <valueSetDefinition>
                 <sorted>false</sorted>
                 <value>
-                    <fullName>||</fullName>
+                    <fullName>2-rooms</fullName>
                     <default>false</default>
-                    <label>||</label>
+                    <label>2-rooms</label>
+                </value>
+                <value>
+                    <fullName>3-rooms</fullName>
+                    <default>false</default>
+                    <label>3-rooms</label>
+                </value>
+                <value>
+                    <fullName>4-rooms</fullName>
+                    <default>false</default>
+                    <label>4-rooms</label>
+                </value>
+                <value>
+                    <fullName>5-rooms</fullName>
+                    <default>false</default>
+                    <label>5-rooms</label>
                 </value>
             </valueSetDefinition>
         </valueSet>

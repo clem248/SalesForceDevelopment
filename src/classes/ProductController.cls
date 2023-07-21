@@ -16,4 +16,22 @@ public with sharing class ProductController {
 			return new List<Product__c>(); // Return an empty list in case of any error
 		}
 	}
+	@AuraEnabled(cacheable=true)
+	public static List<Product__c> getProducts() {
+		return [SELECT Name__c, Description__c, Type__c, Family__c, Image__c, Price__c FROM Product__c];
+	}
+
+	@AuraEnabled
+	public static List<Product__c> getFilters(String selectedType, String selectedFamily) {
+		String soqlQuery = 'SELECT Name__c, Description__c, Type__c, Family__c, Image__c, Price__c FROM Product__c';
+		if (!String.isEmpty(selectedType) && !String.isEmpty(selectedFamily)) {
+			soqlQuery += ' WHERE Type__c = :selectedType AND Family__c = :selectedFamily';
+		} else if (!String.isEmpty(selectedType)) {
+			soqlQuery += ' WHERE Type__c = :selectedType';
+		} else if (!String.isEmpty(selectedFamily)) {
+			soqlQuery += ' WHERE Family__c = :selectedFamily';
+		}
+		return Database.query(soqlQuery);
+	}
+
 }

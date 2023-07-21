@@ -18,10 +18,27 @@ export default class CreateProductModal extends LightningElement {
         this.isModalOpen = false;
     }
 
+    typeOptions = [
+        { label: '2-rooms', value: '2-rooms' },
+        { label: '3-rooms', value: '3-rooms' },
+        { label: '4-rooms', value: '4-rooms' },
+        { label: '5-rooms', value: '5-rooms' },
+        // Add more options as needed
+    ];
+
+    familyOptions = [
+            { label: 'Catty', value: 'Catty' },
+            { label: 'House', value: 'House' },
+            { label: 'Flat', value: 'Flat' },
+            { label: 'Mansion', value: 'Mansion' },
+            // Add more options as needed
+        ];
+
     handleInputChange(event) {
         const fieldName = event.target.name;
         this[fieldName] = event.target.value;
     }
+
 
     handleSave() {
         // Perform validation checks if required
@@ -44,4 +61,3 @@ export default class CreateProductModal extends LightningElement {
         });
     }
 }
-

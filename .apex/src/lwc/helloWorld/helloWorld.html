@@ -1,0 +1,21 @@
+<template>
+    <div class="window">
+        <div class="horizontal-container">
+            <lightning-output-field field-name="Name"> </lightning-output-field>
+
+            <lightning-output-field field-name="Number"> </lightning-output-field>
+            <lightning-button label="CreateProduct" title="Non-primary action" onclick={handleClick} class="slds-m-left_x-small"></lightning-button>
+
+            <lightning-button label="Cart" title="Non-primary action" onclick={handleClick} class="slds-m-left_x-small"></lightning-button>
+        </div>
+        <div class="vertical-container">
+            <h1>Filter</h1>
+            <h2>Type:</h2>
+            <h2>Family</h2>
+        </div>
+        <div>
+            <h1>{Search}</h1>
+        </div>
+    </div>
+
+</template>
