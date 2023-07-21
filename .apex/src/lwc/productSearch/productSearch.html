@@ -1,0 +1,24 @@
+<template>
+    <lightning-textarea
+            label="Search Products by Name or Description"
+            placeholder="Enter search keywords..."
+            value={searchText}
+            onchange={handleSearchChange}
+    ></lightning-textarea>
+
+    <lightning-button label="Search" variant="brand" onclick={handleSearchClick}></lightning-button>
+
+    <!-- Display search results here -->
+    <template if:true={searchResults}>
+        <ul>
+            <template for:each={searchResults} for:item="product">
+                <li key={product.Id}>{product.Name__c} - {product.Description__c}</li>
+            </template>
+        </ul>
+    </template>
+
+    <!-- Display message if no results found -->
+    <template if:true={noResults}>
+        No products found.
+    </template>
+</template>

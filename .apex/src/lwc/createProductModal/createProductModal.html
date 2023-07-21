@@ -1,0 +1,21 @@
+<template>
+    <!-- Your modal content goes here -->
+    <lightning-button label="Create Product" onclick={openModal}></lightning-button>
+    <template if:true={isModalOpen}>
+        <div class="modal-container">
+            <div class="modal-content">
+                <h2>Create Product</h2>
+                <lightning-input label="Name" name="name" value={name} onchange={handleInputChange}></lightning-input>
+                <lightning-input label="Description" name="description" value={description} onchange={handleInputChange}></lightning-input>
+                <lightning-input label="Type" name="type" value={type} onchange={handleInputChange}></lightning-input>
+                <lightning-input label="Family" name="family" value={family} onchange={handleInputChange}></lightning-input>
+                <lightning-input label="Image URL" name="image" value={image} onchange={handleInputChange}></lightning-input>
+                <lightning-input label="Price" type="number" name="price" value={price} onchange={handleInputChange}></lightning-input>
+                <div class="modal-footer">
+                    <lightning-button label="Save" onclick={handleSave}></lightning-button>
+                    <lightning-button label="Cancel" onclick={closeModal}></lightning-button>
+                </div>
+            </div>
+        </div>
+    </template>
+</template>

@@ -204,6 +204,14 @@
         <trackFeedHistory>true</trackFeedHistory>
         <type>Hierarchy</type>
     </fields>
+    <fields>
+        <fullName>isManager__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>isManager</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Checkbox</type>
+    </fields>
     <listViews>
         <fullName>ActiveUsers</fullName>
         <filterScope>Everything</filterScope>
