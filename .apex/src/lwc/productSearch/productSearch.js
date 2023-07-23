@@ -2,6 +2,7 @@ import { LightningElement, wire } from 'lwc';
 import getProducts from '@salesforce/apex/ProductController.getProducts'; // Replace YourApexController with your Apex controller name
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import ProductModal from 'c/productModal'; // Check if the import path is correct
+import CartModal from 'c/cartModal'; // Import the CartModal component
 
 export default class YourComponent extends LightningElement {
   searchText = '';
@@ -12,6 +13,7 @@ export default class YourComponent extends LightningElement {
   noResults = false;
   isModalOpen = false;
   selectedProduct = {};
+  cart = [];
 
 
 
@@ -60,6 +62,8 @@ familyOptions = [
     this.applyFilters();
   }
 
+
+
   // Apply filters based on search text, selected type, and selected family
   applyFilters() {
     this.searchResults = this.products.filter((product) => {
@@ -87,8 +91,29 @@ familyOptions = [
         this.isModalOpen = true;
 
      }
-       closeModal() {
-              this.isModalOpen = false;
-          }
+   closeModal() {
+      this.isModalOpen = false;
+   }
+
+
+
+    handleShowCartClick() {
+        this.isModalOpen = true;
+    }
+    handleAddToCart(event) {
+          const productId = event.target.dataset.productId;
+          const productToAdd = this.searchResults.find((product) => product.Id === productId);
+
+          // Add the selected product to the cart
+          this.cart.push(productToAdd);
+
+          // Show a toast message to indicate the product is added to the cart
+          const toastEvent = new ShowToastEvent({
+              title: 'Success',
+              message: 'Product added to cart',
+              variant: 'success',
+    });
+          this.dispatchEvent(toastEvent);
+    }
 }
 

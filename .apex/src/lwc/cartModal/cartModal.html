@@ -1,0 +1,40 @@
+<template>
+    <lightning-card title="Cart">
+        <div class="slds-p-horizontal_medium">
+            <template if:true={cart.length}>
+                <table class="slds-table slds-table_bordered slds-table_cell-buffer">
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Type</th>
+                        <th>Family</th>
+                        <th>Image</th>
+                        <th>Price</th>
+                        <!-- Add other product details you want to display in the cart -->
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <template for:each={cart} for:item="product">
+                        <tr key={product.Id}>
+                            <td>{product.Name__c}</td>
+                            <td>{product.Description__c}</td>
+                            <td>{product.Type__c}</td>
+                            <td>{product.Family__c}</td>
+                            <td>{product.Image__c}</td>
+                            <td>{product.Price__c}</td>
+                            <!-- Add other product details you want to display in the cart -->
+                        </tr>
+                    </template>
+                    </tbody>
+                </table>
+            </template>
+            <template if:false={cart.length}>
+                No products in the cart.
+            </template>
+        </div>
+        <div class="slds-modal__footer">
+            <lightning-button label="Close" onclick={closeModal}></lightning-button>
+        </div>
+    </lightning-card>
+</template>
