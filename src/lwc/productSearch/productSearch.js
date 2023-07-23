@@ -1,87 +1,99 @@
 import { LightningElement, wire } from 'lwc';
-import getProducts from '@salesforce/apex/ProductController.getProducts';
-import getFilters from '@salesforce/apex/ProductController.getFilters';
+import getProducts from '@salesforce/apex/ProductController.getProducts'; // Replace YourApexController with your Apex controller name
 
-export default class ProductSearch extends LightningElement {
-    products;
-    searchResults;
-    noResults;
-    searchText = '';
-    selectedType = '';
-    selectedFamily = '';
-
-
-    typeOptions = [
-        { label: '2-rooms', value: '2-rooms' },
-        { label: '3-rooms', value: '3-rooms' },
-        { label: '4-rooms', value: '4-rooms' },
-        { label: '5-rooms', value: '5-rooms' },
-        // Add more options as needed
-    ];
-
-    familyOptions = [
-        { label: 'Catty', value: 'Catty' }, // Replace with your actual picklist values
-        { label: 'Flat', value: 'Flat' },
-        { label: 'House', value: 'House' },
-        { label: 'Mansion', value: 'Mansion' },
-        // Add more options as needed
-    ];
+export default class YourComponent extends LightningElement {
+  searchText = '';
+  selectedType = '';
+  selectedFamily = '';
+  searchResults = [];
+  products = [];
+  noResults = false;
+  isModalOpen = false;
+  selectedProduct;
 
 
-    @wire(getProducts)
+
+
+typeOptions = [
+  { label: '2-rooms', value: '2-rooms' },
+  { label: '3-rooms', value: '3-rooms' },
+  { label: '4-rooms', value: '4-rooms' },
+  { label: '5-rooms', value: '5-rooms' },
+];
+
+// Options for the Family picklist
+familyOptions = [
+  { label: 'Catty', value: 'Catty' },
+  { label: 'Flat', value: 'Flat' },
+  { label: 'House', value: 'House' },
+  { label: 'Mansion', value: 'Mansion' },
+];
+  // Wire to the Apex method to get all products initially
+  @wire(getProducts)
     wiredProducts({ data, error }) {
-        if (data) {
-            this.products = data;
-            this.applyFilters(); // Apply filters after getting the initial product list
-        } else if (error) {
-            console.error('Error fetching products:', error);
-        }
-    }
-    handleSearchChange(event) {
-        this.searchText = event.target.value;
+      if (data) {
+        this.products = data;
+        this.searchResults = [...data]; // Initialize searchResults with all products
+        this.noResults = this.searchResults.length === 0;
+      } else if (error) {
+        console.error('Error fetching products:', error);
+      }
     }
 
-    handleSearchClick() {
-        if (this.searchText) {
-            this.searchResults = this.products.filter(
-                (product) =>
-                    product.Name__c.toLowerCase().includes(this.searchText.toLowerCase()) ||
-                    product.Description__c.toLowerCase().includes(this.searchText.toLowerCase())
-            );
-            this.noResults = this.searchResults.length === 0;
-        } else {
-            // If the search text is empty, reset the search results
-            this.searchResults = null;
-            this.noResults = false;
-        }
-    }
-        handleTypeChange(event) {
-            this.selectedType = event.target.value;
-            this.applyFilters();
-        }
+  // Event handler for search text input change
+  handleSearchTextChange(event) {
+    this.searchText = event.target.value;
+    this.applyFilters();
+  }
 
-        handleFamilyChange(event) {
-            this.selectedFamily = event.target.value;
-            this.applyFilters();
-        }
-        applyFilters() {
-            if (!this.allProducts) return; // Make sure allProducts is available
+  // Event handler for type picklist change
+  handleTypeChange(event) {
+    this.selectedType = event.target.value;
+    this.applyFilters();
+  }
 
-            this.products = this.allProducts.filter((product) => {
-                const typeMatch =
-                    !this.selectedType || product.Type__c.toLowerCase().includes(this.selectedType.toLowerCase());
+  // Event handler for family picklist change
+  handleFamilyChange(event) {
+    this.selectedFamily = event.target.value;
+    this.applyFilters();
+  }
 
-                const familyMatch =
-                    !this.selectedFamily || product.Family__c.toLowerCase().includes(this.selectedFamily.toLowerCase());
+  // Apply filters based on search text, selected type, and selected family
+  applyFilters() {
+    this.searchResults = this.products.filter((product) => {
+      const nameMatch = !this.searchText || product.Name__c.toLowerCase().includes(this.searchText.toLowerCase());
+      const descriptionMatch = !this.searchText || product.Description__c.toLowerCase().includes(this.searchText.toLowerCase());
+      const typeMatch = !this.selectedType || product.Type__c.toLowerCase() === this.selectedType.toLowerCase();
+      const familyMatch = !this.selectedFamily || product.Family__c.toLowerCase() === this.selectedFamily.toLowerCase();
 
-                return typeMatch && familyMatch;
-            });
+      return (nameMatch || descriptionMatch) && (typeMatch && familyMatch);
+    });
 
-            this.noResults = this.products.length === 0;
-        }
+    this.noResults = this.searchResults.length === 0;
+  }
 
 
 
+
+
+   handleDetailsClick(event) {
+       // Get the product Id from the data attribute of the button
+       const productId = event.target.dataset.productid;
+
+       // Find the selected product in the list of products
+       this.selectedProduct = this.products.find((product) => product.Id === productId);
+
+       // Show the modal window
+       const modal = this.template.querySelector('section[role="dialog"]');
+       modal.classList.add('slds-fade-in-open');
+     }
+      handleCloseModal() {
+         // Hide the modal window
+         const modal = this.template.querySelector('section[role="dialog"]');
+         modal.classList.remove('slds-fade-in-open');
+
+         // Reset the selected product
+         this.selectedProduct = null;
+       }
 }
-
 
