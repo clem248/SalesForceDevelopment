@@ -1,5 +1,7 @@
 import { LightningElement, wire } from 'lwc';
 import getProducts from '@salesforce/apex/ProductController.getProducts'; // Replace YourApexController with your Apex controller name
+import { ShowToastEvent } from 'lightning/platformShowToastEvent';
+import ProductModal from 'c/productModal'; // Check if the import path is correct
 
 export default class YourComponent extends LightningElement {
   searchText = '';
@@ -9,7 +11,7 @@ export default class YourComponent extends LightningElement {
   products = [];
   noResults = false;
   isModalOpen = false;
-  selectedProduct;
+  selectedProduct = {};
 
 
 
@@ -78,22 +80,15 @@ familyOptions = [
 
    handleDetailsClick(event) {
        // Get the product Id from the data attribute of the button
-       const productId = event.target.dataset.productid;
+       const productId = event.target.dataset.productId;
 
        // Find the selected product in the list of products
        this.selectedProduct = this.products.find((product) => product.Id === productId);
+        this.isModalOpen = true;
 
-       // Show the modal window
-       const modal = this.template.querySelector('section[role="dialog"]');
-       modal.classList.add('slds-fade-in-open');
      }
-      handleCloseModal() {
-         // Hide the modal window
-         const modal = this.template.querySelector('section[role="dialog"]');
-         modal.classList.remove('slds-fade-in-open');
-
-         // Reset the selected product
-         this.selectedProduct = null;
-       }
+       closeModal() {
+              this.isModalOpen = false;
+          }
 }
 

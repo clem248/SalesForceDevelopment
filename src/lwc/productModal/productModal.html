@@ -1,0 +1,22 @@
+<template>
+        <lightning-card>
+            <div class="slds-modal__container">
+                <header class="slds-modal__header">
+                    <h2 class="slds-text-heading_medium">Product Details</h2>
+                </header>
+                <div class="slds-modal__content slds-p-around_medium">
+                    <p>Name:{product.Name__c}</p>
+                    <p>Description:{product.Description__c}</p>
+                    <p>Type: {product.Type__c}</p>
+                    <p>Family: {product.Family__c}</p>
+                    <p>Image: {product.Image__c}</p>
+                    <p>Price: ${product.Price__c}</p>
+                </div>
+                <div class="slds-modal__footer">
+                    <lightning-button label="Close" onclick={closeModal}></lightning-button>
+                </div>
+
+                <!-- Add other product details you want to display -->
+            </div>
+        </lightning-card>
+    </template>

@@ -1,4 +1,5 @@
 <template>
+
     <lightning-card title="Product Search">
         <lightning-layout>
             <lightning-layout>
@@ -48,10 +49,8 @@
                             <div class="slds-card__footer">
                                 <lightning-button
                                         label="Details"
-                                        variant="neutral"
                                         onclick={handleDetailsClick}
                                         data-product-id={product.Id}
-                                        class="slds-m-top_small"
                                 ></lightning-button>
                             </div>
                             <div class="slds-card__footer">
@@ -67,31 +66,24 @@
             </template>
         </template>
 
-        <template if:true={selectedProduct}>
+        <template if:true={isModalOpen}>
             <div class="slds-backdrop slds-backdrop_open"></div>
-            <section role="dialog" tabindex="-1" aria-modal="true" aria-describedby="modal-content-id-1"
-                     class="slds-modal slds-fade-in-open slds-modal_large">
+            <div role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open slds-modal_large">
                 <div class="slds-modal__container">
                     <header class="slds-modal__header">
-                        <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">
-                            Product Details
-                        </h2>
+                        <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closeModal}>
+                            <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">
+                                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                            </svg>
+                            <span class="slds-assistive-text">Close</span>
+                        </button>
                     </header>
                     <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
-                        <p><strong>Name:</strong> {selectedProduct.Name__c}</p>
-                        <p><strong>Description:</strong> {selectedProduct.Description__c}</p>
-                        <p><strong>Type:</strong> {selectedProduct.Type__c}</p>
-                        <p><strong>Family:</strong> {selectedProduct.Family__c}</p>
-                        <p><strong>Price:</strong> ${selectedProduct.Price__c}</p>
-                        <div class="slds-m-top_medium">
-                            <!-- Add more details as needed -->
-                        </div>
+                        <!-- Show the productModal component with the selected product -->
+                        <c-product-modal product={selectedProduct}></c-product-modal>
                     </div>
-                    <footer class="slds-modal__footer">
-                        <lightning-button label="Close" onclick={handleCloseModal}></lightning-button>
-                    </footer>
                 </div>
-            </section>
+            </div>
         </template>
 
 

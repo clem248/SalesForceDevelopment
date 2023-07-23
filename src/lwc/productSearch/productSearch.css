@@ -69,3 +69,19 @@
   }
 }
 
+/* Style the close button */
+.slds-modal__close .slds-button {
+    color: #ffffff; /* Change the button text color */
+    background-color: #0070d2; /* Change the button background color */
+    border-radius: 50%; /* Make the button circular */
+    width: 30px; /* Adjust the button width */
+    height: 30px; /* Adjust the button height */
+    line-height: 30px; /* Vertically center the text in the button */
+    font-size: 16px; /* Adjust the font size of the button text */
+}
+
+.slds-modal__close .slds-button:hover {
+    background-color: #005fb2; /* Change the button background color on hover */
+}
+
+
