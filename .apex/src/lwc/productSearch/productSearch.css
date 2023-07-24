@@ -1,87 +1,18 @@
-/* Add custom CSS to adjust the card appearance */
-.slds-card {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    background-color: #f3f2f1;
-    border: 1px solid #d8dde6;
-    border-radius: 4px;
-    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.10);
-    padding: 0.75rem;
-    margin: 0.5rem;
-}
-
-.slds-card__header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.5rem 0;
-}
-
-.slds-card__body {
-    flex-grow: 1;
-    padding: 0.5rem 0;
-}
-/* Add custom CSS for picklists */
-.slds-form-element__control {
-    border: 1px solid #d8dde6;
-    border-radius: 4px;
-}
-
-.slds-form-element__control .slds-combobox {
-    border: none;
-}
 
 
-.slds-backdrop {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 6000;
-  background-color: rgba(0, 0, 0, 0.6);
-}
+ .slds-card {
+     width: 120%; /* Adjust the width as per your preference */
+     padding: 10px;
+     border: 1px solid #d8dde6;
+     border-radius: 5px;
+     margin: 10px;
+     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+ }
 
-.slds-modal {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 6001;
-  background-color: #ffffff;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
-  max-width: 90%;
-  width: 600px;
-  border-radius: 8px;
-}
+ .slds-modal__close {
+   z-index: 2;
+ }
 
-.slds-fade-in-open {
-  animation: fadeIn 0.3s ease-in;
-}
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-/* Style the close button */
-.slds-modal__close .slds-button {
-    color: #ffffff; /* Change the button text color */
-    background-color: #0070d2; /* Change the button background color */
-    border-radius: 50%; /* Make the button circular */
-    width: 30px; /* Adjust the button width */
-    height: 30px; /* Adjust the button height */
-    line-height: 30px; /* Vertically center the text in the button */
-    font-size: 16px; /* Adjust the font size of the button text */
-}
-
-.slds-modal__close .slds-button:hover {
-    background-color: #005fb2; /* Change the button background color on hover */
-}
 
 

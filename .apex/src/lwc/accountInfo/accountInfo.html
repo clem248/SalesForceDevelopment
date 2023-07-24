@@ -1,0 +1,14 @@
+<template>
+    <lightning-card title="Account Information">
+        <template if:true={accounts}>
+            <template for:each={accounts} for:item="account">
+                <p key={account.Id}>
+                    <strong>{account.Name}</strong> - {account.AccountNumber}
+                </p>
+            </template>
+        </template>
+        <template if:false={accounts}>
+            No accounts found.
+        </template>
+    </lightning-card>
+</template>

@@ -3,6 +3,8 @@ import getProducts from '@salesforce/apex/ProductController.getProducts'; // Rep
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import ProductModal from 'c/productModal'; // Check if the import path is correct
 import CartModal from 'c/cartModal'; // Import the CartModal component
+import productSearchCSS from './productSearch.css'; // Import the CSS file
+import { LightningIcon } from 'lightning/icon'; // Import the Lightning Icon component
 
 export default class YourComponent extends LightningElement {
   searchText = '';
@@ -12,6 +14,7 @@ export default class YourComponent extends LightningElement {
   products = [];
   noResults = false;
   isModalOpen = false;
+  isModalOpen2 = false;
   selectedProduct = {};
   cart = [];
 
@@ -88,12 +91,16 @@ familyOptions = [
 
        // Find the selected product in the list of products
        this.selectedProduct = this.products.find((product) => product.Id === productId);
-        this.isModalOpen = true;
+        this.isModalOpen2 = true;
 
      }
+
    closeModal() {
-      this.isModalOpen = false;
-   }
+           this.isModalOpen = false;
+           this.isModalOpen2 = false;
+       }
+
+
 
 
 
