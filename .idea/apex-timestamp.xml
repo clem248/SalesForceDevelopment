@@ -12,6 +12,11 @@
       <option name="lastModifiedDate" value="1689952874016" />
     </index-record>
     <index-record>
+      <option name="fileId" value="01p0600000FRE7WAAX" />
+      <option name="fileName" value="classes/OrderItemTriggerTest.cls" />
+      <option name="lastModifiedDate" value="1690277858000" />
+    </index-record>
+    <index-record>
       <option name="fileId" value="02u06000001TN4rAAG" />
       <option name="fileName" value="applications/standard__Sales.app" />
       <option name="lastModifiedDate" value="1689763282000" />
@@ -325,6 +330,11 @@
       <option name="fileId" value="000000000000000AAA" />
       <option name="fileName" value="objects/AccountCleanInfo.object" />
       <option name="lastModifiedDate" value="1689952885327" />
+    </index-record>
+    <index-record>
+      <option name="fileId" value="01p0600000FRE7MAAX" />
+      <option name="fileName" value="classes/ProductControllerTest.cls" />
+      <option name="lastModifiedDate" value="1690275892000" />
     </index-record>
     <index-record>
       <option name="fileId" value="00h06000007yOvWAAU" />
@@ -1695,6 +1705,11 @@
       <option name="fileId" value="000000000000000AAA" />
       <option name="fileName" value="objects/DataUseLegalBasis.object" />
       <option name="lastModifiedDate" value="1689952875259" />
+    </index-record>
+    <index-record>
+      <option name="fileId" value="01p0600000FRDySAAX" />
+      <option name="fileName" value="classes/CreateProductModalControllerTest.cls" />
+      <option name="lastModifiedDate" value="1690275430000" />
     </index-record>
     <index-record>
       <option name="fileId" value="00h06000007yOtkAAE" />
