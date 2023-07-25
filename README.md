@@ -15,7 +15,7 @@ In intelij idea i created  trigger package, test package, but when i created a f
 What i didnt do?
 I didn't add a button on Account layout that would lead to Order Management page.  I didnt create an unmanaged package, cause it needed 70% coverege with test of apex classes, while i had only around 40% and didnt know how to make more. Also OrderItemTrigger's 51% coverege wasnt counted while creating unmanaged package and always gave me an error. So, i tried to create it but i failed.
 
-Overall, i'm quite satisfied with the work i have done. I see problems, mistakes in it , i also see solutions and ways to upgrade it. 
+Overall, i'm quite satisfied with the work i have done. I see problems, mistakes in my work , but i also see solutions and ways to upgrade it. 
 
 Thank you)
 
